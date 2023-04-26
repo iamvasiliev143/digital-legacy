@@ -18,30 +18,65 @@ import { TombstoneEntity } from './tombstone.entity';
 @Entity({
   name: 'legacy',
   orderBy: {
-    createdAt: 'DESC',
+    id: 'ASC',
   },
 })
 export class LegacyEntity {
   @PrimaryGeneratedColumn()
   public readonly id!: string;
 
-  @Column()
+  @Column({
+    nullable: true,
+  })
+  @Index()
+  public title!: string;
+
+  @Column({
+    nullable: true,
+  })
+  @Index()
   public reason!: string;
 
   @Column({
+    nullable: true,
+  })
+  public message!: string;
+
+  @Column({
+    nullable: true,
+  })
+  @Index()
+  public country!: string;
+
+  @Column({
+    nullable: true,
+  })
+  @Index()
+  public state!: string;
+
+  @Column({
+    nullable: true,
+  })
+  @Index()
+  public city!: string;
+
+  @Column({
     type: 'date',
+    nullable: true,
   })
   @Index()
   public birthday!: Date;
 
   @Column({
     type: 'date',
+    nullable: true,
   })
   @Index()
   public deathday!: Date;
 
   @Column({
     type: 'simple-array',
+    nullable: true,
   })
   public readonly tombstonePosition!: number[];
 
